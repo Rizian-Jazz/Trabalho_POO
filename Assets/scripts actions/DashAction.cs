@@ -25,5 +25,7 @@ public class DashAction : ActionModel
         yield return WaitForSeconds(dashCooldown);
         canDash = true;
         isDashing = false;
+
+        //teste pra ver se agora commita
     }
 }
