@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Colletions; 
+using System.Collections;
 public class NonPlayerableController : BaseCharacterController
 {
     public float intervalo = 6.7f;
@@ -11,6 +11,8 @@ public class NonPlayerableController : BaseCharacterController
     {
         StartCoroutine(Buzanfa());
     }
+
+    
     private IEnumerator Buzanfa()
     {
         while (true)
@@ -24,7 +26,7 @@ public class NonPlayerableController : BaseCharacterController
         }
     }
 
-    private void Atumalaca()
+    private IEnumerator Atumalaca()
     {
         Choraxx = true; //como?
         int acoes = Random.Range(0, 4);

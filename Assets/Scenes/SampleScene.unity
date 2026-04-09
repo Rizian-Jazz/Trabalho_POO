@@ -187,10 +187,10 @@ MonoBehaviour:
   walkSpeed: 5
   walkDuration: 1
   walkDirections:
-  - {x: 1, y: 0}
-  - {x: 0, y: -1}
-  - {x: -1, y: 0}
-  - {x: 0, y: 1}
+  - {x: 1, y: 0, z: -1.3325309e-18}
+  - {x: 0, y: -1, z: 8.34e-43}
+  - {x: -1, y: 0, z: -1.3325656e-18}
+  - {x: 0, y: 1, z: 8.34e-43}
 --- !u!114 &280375252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,11 +206,7 @@ MonoBehaviour:
   rb: {fileID: 280375254}
   groundCheck: {fileID: 280375257}
   groundCheckSize: {x: 0.5, y: 0.1}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
   jumpForce: 5
-  canDoubleJump: 1
 --- !u!61 &280375253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -326,19 +322,7 @@ MonoBehaviour:
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 280375258}
-        m_TargetAssemblyTypeName: PlayerCharacterController, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -386,7 +370,19 @@ MonoBehaviour:
     m_ActionId: dc405830-5af7-477f-aefe-b6f9b585b0ac
     m_ActionName: 'Player/squarewalk[/Keyboard/q]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 280375258}
+        m_TargetAssemblyTypeName: PlayerCharacterController, Assembly-CSharp
+        m_MethodName: OnDoubleJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1af2a30b-de2d-42fc-b59a-4f03d7cdb3bd
     m_ActionName: 'Player/double Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0

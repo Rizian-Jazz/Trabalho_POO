@@ -3,9 +3,8 @@ public class DoubleJumpAction : ActionModel
 {
     public Transform groundCheck;
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.1f); 
-    public LayerMask groundLayer = ~0;
+   
     public float jumpForce = 7f;
-    public bool canDoubleJump = true; 
     private int jumpCount = 0;
     protected override void Awake()
     {
@@ -14,41 +13,45 @@ public class DoubleJumpAction : ActionModel
         {
             GameObject groundCheckObj = new GameObject("GroundCheck");
             groundCheckObj.transform.SetParent(transform, false);
-            groundCheckObj.transform.localPosition = new Vector3(0, -0.5f, 0);
+            groundCheckObj.transform.localPosition = new Vector3(0, -0.6f, 0);
             groundCheck = groundCheckObj.transform;
+        }
+    }  
+    void Update()
+    {
+        if (IsGrounded())
+        {
+            jumpCount = 0;
         }
     }
     public override void Use()
     {
         if (!CanUseAction()) return;
-        if(IsGrounded())
-        {
-            JumpAction();
-            jumpCount = 1;
-        }
-        else if (canDoubleJump && jumpCount < 2)
-        {
+    
+        if (jumpCount < 2)
+        {            
             JumpAction();
             jumpCount++;
-        }
-        if (!IsGrounded() && jumpCount >= 2)
-        {
-            canDoubleJump = false;
-        }
-    }
-    private bool IsGrounded()
-    {
-        bool grounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
-        if (grounded)
-        {
-            this.jumpCount = 0;
-            return grounded;
+           
         }   
-        else return false;  
+     
     }
+   private bool IsGrounded()
+    {
+        Collider2D hit = Physics2D.OverlapBox(
+            groundCheck.position,
+            groundCheckSize,
+            0
+        );
+
+         return hit != null && hit.gameObject != gameObject;
+     
+    }
+
 
     public void JumpAction()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
+  
 }
