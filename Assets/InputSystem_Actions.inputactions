@@ -26,9 +26,9 @@
                 },
                 {
                     "name": "squarewalk",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "dc405830-5af7-477f-aefe-b6f9b585b0ac",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -37,6 +37,15 @@
                     "name": "double Jump",
                     "type": "Button",
                     "id": "1af2a30b-de2d-42fc-b59a-4f03d7cdb3bd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "dash",
+                    "type": "Button",
+                    "id": "2a4b572a-4cf9-452c-8eca-88c79122dde9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -228,6 +237,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "double Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09508783-11e5-4df6-9336-3423a4c53b3e",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

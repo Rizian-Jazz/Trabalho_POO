@@ -56,13 +56,6 @@ public class DoubleJumpAction : ActionModel
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         jumpCount++;
     }
-    void OnDrawGizmos()
-    {
-        if (groundCheck == null) return;
-        
-       
-        Gizmos.color = IsGrounded() ? Color.green : Color.red;
-        Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);    
-    }
+
   
 }
