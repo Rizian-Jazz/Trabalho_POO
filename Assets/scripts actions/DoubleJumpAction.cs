@@ -29,7 +29,7 @@ public class DoubleJumpAction : ActionModel
         else if (canDoubleJump && jumpCount < 2)
         {
             JumpAction();
-            jumpCount = 2;
+            jumpCount++;
         }
         if (!IsGrounded() && jumpCount >= 2)
         {
@@ -44,7 +44,7 @@ public class DoubleJumpAction : ActionModel
             this.jumpCount = 0;
             return grounded;
         }   
-        return false;  
+        else return false;  
     }
 
     public void JumpAction()
