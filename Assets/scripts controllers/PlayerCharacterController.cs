@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerCharacterController : BaseCharacterController
 {
-
     private PlayerInput playerInput;
     void Update()
     { 
