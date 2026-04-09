@@ -2,53 +2,67 @@ using UnityEngine;
 public class DoubleJumpAction : ActionModel
 {
     public Transform groundCheck;
-    public Vector2 groundCheckSize = new Vector2(0.5f, 0.1f); 
-    public LayerMask groundLayer = ~0;
+    public Vector2 groundCheckSize = new(0.5f, 0.2f); 
+    public LayerMask groundLayer;
     public float jumpForce = 7f;
-    public bool canDoubleJump = true; 
-    private int jumpCount = 0;
+    public bool canDoubleJump;
+    public int jumpCount = 0, maxJumps = 2;
     protected override void Awake()
     {
         base.Awake();
         if(groundCheck == null)
         {
-            GameObject groundCheckObj = new GameObject("GroundCheck");
+            GameObject groundCheckObj = new("GroundCheck");
             groundCheckObj.transform.SetParent(transform, false);
-            groundCheckObj.transform.localPosition = new Vector3(0, -0.5f, 0);
+            groundCheckObj.transform.localPosition = new Vector2(0, -0.6f);
+            
             groundCheck = groundCheckObj.transform;
         }
+    }
+
+    void Update()
+    {
+       bool touchingGround = IsGrounded();
+
+        
+        if (touchingGround && rb.linearVelocity.y <= 0.1f)
+        {
+            if (jumpCount != 0)
+            {
+                Debug.Log("Chão detectado! Resetando pulos.");
+                jumpCount = 0;
+            }
+        }
+       
     }
     public override void Use()
     {
         if (!CanUseAction()) return;
-        if(IsGrounded())
+        if (jumpCount < maxJumps)
         {
-            JumpAction();
-            jumpCount = 1;
-        }
-        else if (canDoubleJump && jumpCount < 2)
-        {
-            JumpAction();
-            jumpCount++;
-        }
-        if (!IsGrounded() && jumpCount >= 2)
-        {
-            canDoubleJump = false;
-        }
+           JumpAction();         
+        }                
+
     }
     private bool IsGrounded()
     {
-        bool grounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
-        if (grounded)
-        {
-            this.jumpCount = 0;
-            return grounded;
-        }   
-        else return false;  
+       
+        Collider2D hit = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
+        return hit != null;
     }
 
     public void JumpAction()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        jumpCount++;
     }
+    void OnDrawGizmos()
+    {
+        if (groundCheck == null) return;
+        
+       
+        Gizmos.color = IsGrounded() ? Color.green : Color.red;
+        Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);    
+    }
+  
 }

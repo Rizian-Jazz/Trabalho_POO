@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class JumpAction : ActionModel
 {
- public float jumpForce = 7f;
+  public float jumpForce = 7f;
 
-   public override void Use()
-    {
+  protected override void Awake()
+  {
+    base.Awake();
+  }
+
+  public override void Use()
+  {
    
-    }
+  }
 
-    private void Jump()
-    {
+  private void Jump()    
+  {
     
-    }
+  }
 }
