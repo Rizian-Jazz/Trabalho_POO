@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 999524f9869dcb64984302d72b771ebf
+  productGUID: 050deefa1ced3ae499ff35d538c07a19
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Trabalho_POO
+  productName: projeto_POO
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -604,14 +604,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Trabalho_POO
+  metroPackageName: projeto_POO
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Trabalho_POO
+  metroApplicationDescription: projeto_POO
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -680,12 +680,12 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 0
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: d3da68b4-4003-4993-b3cb-7133cccfe102
+  cloudProjectId: 86a0836f-ff3c-4dcb-b758-dd398d35a1c3
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Trabalho_POO
+  projectName: projeto_POO
   organizationId: riza_jazz
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
