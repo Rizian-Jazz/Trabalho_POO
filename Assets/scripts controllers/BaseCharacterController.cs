@@ -33,6 +33,7 @@ public abstract class BaseCharacterController : MonoBehaviour
     virtual public void Move()
     {
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
+        
     }
 
     virtual public void DoubleJump()

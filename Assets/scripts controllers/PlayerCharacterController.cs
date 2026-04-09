@@ -7,7 +7,10 @@ public class PlayerCharacterController : BaseCharacterController
     private PlayerInput playerInput;
     void Update()
     { 
-      Move();      
+        Move(); 
+
+        DashAction dash = GetComponent<DashAction>();   
+        if (dash != null && dash.isDashing) return;
     }
     protected override void Awake()
     {   

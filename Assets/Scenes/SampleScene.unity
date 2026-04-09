@@ -157,6 +157,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumpAction
   rb: {fileID: 280375254}
+  groundCheck: {fileID: 0}
+  groundCheckSize: {x: 0.5, y: 0.2}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   jumpForce: 7
 --- !u!114 &280375250
 MonoBehaviour:
@@ -170,12 +175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fb8090c0f0aeb4ebc39119fa20f169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DashAction
-  rb: {fileID: 0}
+  rb: {fileID: 280375254}
   dashForce: 20
   dashCooldown: 1
-  dashCount: 0
   dashTime: 0.2
-  MoveSpeed: 0
+  isDashing: 0
+  canDash: 1
 --- !u!114 &280375251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,13 +214,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoubleJumpAction
   rb: {fileID: 280375254}
-  groundCheck: {fileID: 280375257}
+  groundCheck: {fileID: 0}
   groundCheckSize: {x: 0.5, y: 0.1}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
   jumpForce: 5
-  canDoubleJump: 1
+  canDoubleJump: 0
+  jumpCount: 0
+  maxJumps: 2
 --- !u!61 &280375253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -331,7 +338,19 @@ MonoBehaviour:
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 280375258}
+        m_TargetAssemblyTypeName: PlayerCharacterController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -394,6 +413,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1af2a30b-de2d-42fc-b59a-4f03d7cdb3bd
     m_ActionName: 'Player/double Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 280375258}
+        m_TargetAssemblyTypeName: PlayerCharacterController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2a4b572a-4cf9-452c-8eca-88c79122dde9
+    m_ActionName: 'Player/dash[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -467,7 +502,7 @@ Transform:
   m_GameObject: {fileID: 280375247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2452, y: -1.25958, z: 0}
+  m_LocalPosition: {x: 0.08, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +755,7 @@ GameObject:
   - component: {fileID: 1636526020}
   - component: {fileID: 1636526019}
   - component: {fileID: 1636526022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: ground
   m_Icon: {fileID: 0}
