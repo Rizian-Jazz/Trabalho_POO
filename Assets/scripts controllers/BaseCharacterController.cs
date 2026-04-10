@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SquareWalkAction))]
 [RequireComponent(typeof(DashAction))]
 [RequireComponent(typeof(JumpAction))]
+[RequireComponent(typeof(SquareWalk_Version2))]
 
 public abstract class BaseCharacterController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public abstract class BaseCharacterController : MonoBehaviour
     protected SquareWalkAction squareWalkAction;
     protected DashAction dashAction;
     protected JumpAction jumpAction;
+    protected SquareWalk_Version2 squareWalkV2;
+
 
     protected virtual void Awake()
     {
@@ -28,6 +31,8 @@ public abstract class BaseCharacterController : MonoBehaviour
         squareWalkAction = GetComponent<SquareWalkAction>();
         dashAction = GetComponent<DashAction>();
         jumpAction = GetComponent<JumpAction>();
+        squareWalkV2 = GetComponent<SquareWalk_Version2>();
+
     }
 
     virtual public void Move()
@@ -44,7 +49,10 @@ public abstract class BaseCharacterController : MonoBehaviour
     virtual public void SquareWalk()
     {   
         if (squareWalkAction != null)
-        squareWalkAction.Use();
+        {
+            direction = Vector2.zero;
+            squareWalkAction.Use();
+        }
     }
     virtual public void Dash()
     {   
@@ -55,6 +63,14 @@ public abstract class BaseCharacterController : MonoBehaviour
     {   
         if (jumpAction != null)
         jumpAction.Use();
+    }
+    virtual public void SquareWalkV2()
+    {
+        if(squareWalkV2 != null)
+        {
+            direction = Vector2.zero;
+            squareWalkV2.Use();
+        }
     }
 
 }

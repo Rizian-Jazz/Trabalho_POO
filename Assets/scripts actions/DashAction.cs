@@ -8,10 +8,12 @@ public class DashAction : ActionModel
     public bool isDashing = false, canDash = true;
 
     private Coroutine DashCoroutine;
+    private BaseCharacterController controller;
 
     protected override void Awake()
     {
         base.Awake();
+        controller = GetComponent<BaseCharacterController>();
     }
 
     public override void Use()
@@ -28,16 +30,9 @@ public class DashAction : ActionModel
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;    
 
-        float direction = 1;
+        float direction = 1f;
+        if (controller.direction.x < 0) direction = -1f;   
 
-        if (transform.localScale.x < 0) 
-        {
-            direction = -1; 
-        }
-        else 
-        {
-            direction = 1;
-        }
         float timer = 0;
         while (timer < dashTime)
         {
@@ -46,10 +41,7 @@ public class DashAction : ActionModel
             timer += Time.deltaTime;
             yield return null; 
         }   
-        rb.linearVelocity = new Vector2(direction * dashForce, 0f);     
-           
-        yield return new WaitForSeconds(dashTime);
-
+       
         rb.gravityScale = originalGravity;
         rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y); // Para o movimento horizontal
         isDashing = false;
