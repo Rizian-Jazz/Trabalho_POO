@@ -1,15 +1,11 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using System;
 public class DashAction : ActionModel
 {
     public float dashForce = 20f, dashCooldown = 1f, dashTime = 0.2f;
     public bool isDashing = false, canDash = true;
-
     private Coroutine DashCoroutine;
     private BaseCharacterController controller;
-
     protected override void Awake()
     {
         base.Awake();

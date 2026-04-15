@@ -11,7 +11,6 @@ public abstract class BaseCharacterController : MonoBehaviour
 {
     protected Rigidbody2D rb;
     protected BoxCollider2D boxCollider;
-
     public float moveSpeed = 7f;
     public Vector2 direction;
 
@@ -37,8 +36,7 @@ public abstract class BaseCharacterController : MonoBehaviour
 
     virtual public void Move()
     {
-        rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
-        
+        rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);     
     }
 
     virtual public void DoubleJump()

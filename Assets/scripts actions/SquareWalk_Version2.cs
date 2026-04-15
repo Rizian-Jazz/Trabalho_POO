@@ -5,7 +5,6 @@ public class SquareWalk_Version2 : ActionModel
     public float walkSpeed = 3f, walkDuration = 1f;
     public Vector2[] walkDirections = new Vector2[4] { Vector2.right, Vector2.up, Vector2.left, Vector2.down };
     private int currentDirectionIndex = 0;
-
     public bool isWalking = false;
     private Coroutine walkInSquareCoroutine;
     private float originalGravityScale;
@@ -42,7 +41,6 @@ public class SquareWalk_Version2 : ActionModel
                 timer = 0f;
                 currentDirectionIndex = (currentDirectionIndex + 1) % walkDirections.Length;
             }
-
             yield return new WaitForFixedUpdate();
         }
     }

@@ -9,9 +9,6 @@ public class SquareWalkAction : ActionModel
 
     public bool isWalking = false; 
     private Coroutine WalkInSquareCoroutine;
-  
-
-
     public override void Use()
      {
         if (!CanUseAction()) return;
